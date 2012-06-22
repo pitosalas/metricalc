@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+    "http://www.w3.org/TR/html4/strict.dtd">
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.sparkline.min.js"></script>
+
+    <script type="text/javascript">
+    $(function() {
+        /** This code runs when everything has been loaded on the page */
+        /* Inline sparklines take their values from the contents of the tag */
+        $('.inlinesparkline').sparkline(); 
+
+        /* Sparklines can also take their values from the first argument 
+        passed to the sparkline() function */
+        var myvalues = [10,8,5,7,4,4,1];
+        $('.dynamicsparkline').sparkline(myvalues);
+
+        /* The second argument gives options such as chart type */
+        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+
+        /* Use 'html' instead of an array of values to pass options 
+        to a sparkline with data in the tag */
+        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+    });
+    </script>
+</head>
+<body>
+
+<h1>Overall results of the survey</h1>
+<h2>Summary</h2>
+<ul>
+    <li>Weeks surveyed so far: </li>
+    <li>Number of students: 11 </li>
+</ul>
+<h2>Questions summary</h2>
+<ul>
+    <li>All questions have the following possible responses:
+        <ul>
+            <li>I have no clue (0) </li>
+            <li>I think I've heard about it (1) </li>
+            <li>I feel that I understand it (2) </li>
+            <li>I understand and can apply it (3) </li>
+            <li>I can use it in my sleep (4) </li>
+        </ul>
+    </li>
+    <li> Each topic below is followed by a sparkline indicating how the rating for that
+        quesion changes from week to week in the class
+    </li>
+</ul>
+
+
+<p style="font-size: large;">
+    Agile Development, week to week: <span class="inlinesparkline">1,4,0,0,0,0,0,0,0,0,0</span>.
+</p>
+<p style="font-size: large;">
+    Ruby Programming, week to week: <span class="inlinesparkline">1,4,0,0,0,0,0,0,0,0,0</span>.
+</p>
+<p>
+Sparkline with dynamic data: <span class="dynamicsparkline">Loading..</span>
+</p>
+<p>
+Bar chart with dynamic data: <span class="dynamicbar">Loading..</span>
+</p>
+<p>
+Bar chart with inline data: <span class="inlinebar">1,3,4,5,3,5</span>
+</p>
+
+
+</body>
+</html>m
