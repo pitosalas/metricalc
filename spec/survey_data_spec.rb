@@ -10,24 +10,28 @@ describe "test input data" do
   end
 
   describe "test a small data set" do
-    subject { SurveyData.new(["Date", "Q1", "Q2"],
+    subject { s = SurveyData.new(["Date", "Q1", "Q2"],
         [["6/4/2012 12:27:46", 1, 2],
          ["6/4/2012 12:27:46", 1, 2],
          ["6/10/2012 12:27:46", 1, 2],
-         ["6/10/2012 12:27:46", 1, 2]]) }
+         ["6/10/2012 12:27:46", 1, 2]])
+         s.process
+         s }
     it { subject.n_responses.should be == 4}
     it { subject.n_rounds.should be == 2 }
   end
 
   describe "small data with tricky rounds set" do
-    subject { SurveyData.new(["Date", "Q1", "Q2"],
+    subject { s = SurveyData.new(["Date", "Q1", "Q2"],
         [["6/4/2012 12:27:46", 1, 2],
          ["6/4/2012 12:27:46", 1, 2],
          ["6/10/2012 12:27:46", 1, 2],
          ["6/11/2012 12:27:46", 1, 2],
-         ["6/12/2012 12:27:46", 1, 2]] ) }
+         ["6/12/2012 12:27:46", 1, 2]] )
+        s.process
+        s }
     it { subject.n_responses.should be == 5}
-    it { subject.n_rounds.should be == 3 }
+    it { subject.n_rounds.should be == 2 }
   end
 
   describe "use third week of data" do
@@ -41,7 +45,6 @@ describe "test input data" do
     it { subject.n_responses_for_round(0).should be == 11 }
     it { subject.n_responses_for_round(1).should be == 11 }
     it { subject.n_responses_for_round(2).should be == 11 }
-    it { subject.n_responses_for_round(3).should be == 11 }
 
   end
 

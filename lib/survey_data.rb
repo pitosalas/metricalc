@@ -21,27 +21,27 @@ class SurveyData
   end
 
   def process
-    @responses.sort { |a, b| a.day <=> b.day }
+    @responses.sort { |a, b| a.calendar_week <=> b.calendar_week }
     determine_rounds
   end
 
   # analyze input data and detect voting rounds
   def determine_rounds
-    nround = 0
-    @rounds[nround] = RoundsData.new(0)
-    spos = 0
-    sday = @responses[spos].day
-    @responses.each_index do
-      |ind|
-      if @responses[ind].day > sday + 1
-        @rounds[nround].fin = ind-1
-        nround += 1
-        @rounds[nround] = RoundsData.new(ind)
-        spos = ind
-        sday = @responses[ind].day
+    @rounds = []
+    the_round = 0
+    @rounds[the_round] = RoundsData.new(0)
+    @responses.each_index do |ind|
+      puts "loop index: #{ind}"
+      if !(@responses[ind+1].nil? || @responses[ind].same_round?(@responses[ind+1]))
+        @rounds[the_round].fin = ind
+        puts "round: #{the_round}, #{@rounds[the_round].inspect}, #{ind}"
+        the_round += 1
+        @rounds[the_round] = RoundsData.new(ind+1)
       end
     end
-    @rounds[nround].fin = @responses.length
+    @rounds[the_round].fin = @responses.length-1
+    puts "round: #{the_round}, #{@rounds[the_round].inspect}"
+
   end
 
   def n_responses_for_round n
