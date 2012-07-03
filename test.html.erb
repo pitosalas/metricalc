@@ -28,7 +28,7 @@
   <% require './metricalc' %>
   <% surv = SurveyData.new %>
   <% inp = InputData.new %> 
-  <% inp.read "/mydev/metriccalc/data/weeklyfile.csv", surv %>
+  <% inp.read "/mydev/metriccalc/data/weekly4file.csv", surv %>
   <% surv.process %>
 <h1>Overall results of the survey</h1>
 <h2>Summary</h2>
@@ -36,4 +36,26 @@
     <li>Weeks surveyed so far: <%= surv.n_weeks %> </li>
     <li>Number of students: <%= surv.n_students %> </li>
 </ul>
+<h2>Questions summary:</h2>
+<ul>
+    <li>All questions have the following possible responses:
+        <ul>
+            <% Response.resp_choices_n.times do |i| %>
+                <li><%= Response.resp_choice_string(i)%></li>
+            <% end %>
+        </ul>
+    </li>
+    <li> Each topic below is followed by a sparkline indicating how the rating for that quesion changes from week to week in the class
+    </li>
+</ul>
+<p style="font-size: large;">
+    Agile Development, week to week: <span class="inlinesparkline">
+    <% weekly_responses = surv.questions[0].weekly_responses %>
+        <% weekly_responses.each do |a_response| %>
+            <%= a_response %>,
+        <% end %>
+    </span>.
+</p>
+
+
 

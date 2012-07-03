@@ -21,6 +21,7 @@ class SurveyData
   end
 
   def process
+    #puts "Processing..."
     @responses.sort { |a, b| a.calendar_week <=> b.calendar_week }
     determine_rounds
   end
@@ -31,17 +32,14 @@ class SurveyData
     the_round = 0
     @rounds[the_round] = RoundsData.new(0)
     @responses.each_index do |ind|
-      puts "loop index: #{ind}"
       if !(@responses[ind+1].nil? || @responses[ind].same_round?(@responses[ind+1]))
         @rounds[the_round].fin = ind
-        puts "round: #{the_round}, #{@rounds[the_round].inspect}, #{ind}"
+        #puts "round boundary: #{the_round}, #{@rounds[the_round].inspect}, #{ind}"
         the_round += 1
         @rounds[the_round] = RoundsData.new(ind+1)
       end
     end
     @rounds[the_round].fin = @responses.length-1
-    puts "round: #{the_round}, #{@rounds[the_round].inspect}"
-
   end
 
   def n_responses_for_round n
@@ -56,6 +54,18 @@ class SurveyData
 
   def n_responses
     @responses.size
+  end
+
+  def n_students
+    n_responses / n_rounds
+  end
+
+  def n_weeks
+    n_rounds
+  end
+
+  def response_choices
+    Response.response_choices
   end
 
 end

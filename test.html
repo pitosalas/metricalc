@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+    "http://www.w3.org/TR/html4/strict.dtd">
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.sparkline.min.js"></script>
+
+    <script type="text/javascript">
+    $(function() {
+        /** This code runs when everything has been loaded on the page */
+        /* Inline sparklines take their values from the contents of the tag */
+        $('.inlinesparkline').sparkline(); 
+
+        /* Sparklines can also take their values from the first argument 
+        passed to the sparkline() function */
+        var myvalues = [10,8,5,7,4,4,1];
+        $('.dynamicsparkline').sparkline(myvalues);
+
+        /* The second argument gives options such as chart type */
+        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+
+        /* Use 'html' instead of an array of values to pass options 
+        to a sparkline with data in the tag */
+        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+    });
+    </script>
+</head>
+<body>
+  
+  
+   
+  
+  
+<h1>Overall results of the survey</h1>
+<h2>Summary</h2>
+<ul>
+    <li>Weeks surveyed so far: 4 </li>
+    <li>Number of students: 11 </li>
+</ul>
+<h2>Questions summary:</h2>
+<ul>
+    <li>All questions have the following possible responses:
+        <ul>
+            
+            
+                <li>Not a clue what it is</li>
+            
+                <li>Sounds familiar to me</li>
+            
+                <li>I feel I understand it</li>
+            
+                <li>I am able to use and apply it</li>
+            
+                <li>I know it in depth</li>
+            
+        </ul>
+    </li>
+
+

@@ -36,11 +36,9 @@
 <ul>
     <li>All questions have the following possible responses:
         <ul>
-            <li>I have no clue (0) </li>
-            <li>I think I've heard about it (1) </li>
-            <li>I feel that I understand it (2) </li>
-            <li>I understand and can apply it (3) </li>
-            <li>I can use it in my sleep (4) </li>
+            <% Resp.resp_choices_n.times do |i| %>
+                <li><%= Resp.resp_choices_string(i)%></li>
+            <% end %>
         </ul>
     </li>
     <li> Each topic below is followed by a sparkline indicating how the rating for that

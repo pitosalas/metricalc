@@ -6,7 +6,7 @@ class RoundsData
   end
 
   def n_resp
-    @fin - @start
+    (@fin - @start) + 1
   end
 end
 

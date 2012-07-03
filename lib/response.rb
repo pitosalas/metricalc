@@ -1,4 +1,21 @@
 class Response
+  def self.resp_choices
+    [ [0, "Not a clue what it is"],
+      [1, "Sounds familiar to me"],
+      [2, "I feel I understand it"],
+      [3, "I am able to use and apply it"],
+      [4, "I know it in depth"]
+    ]
+  end
+
+  def self.resp_choices_n
+    self.resp_choices.size
+  end
+
+  def self.resp_choice_string v
+    self.resp_choices.find { |x| x[0]==v }[1]
+  end
+    
   attr_reader :time
   def initialize resp_array
     @time = DateTime.parse(resp_array[0])
