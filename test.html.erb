@@ -8,7 +8,13 @@
     $(function() {
         /** This code runs when everything has been loaded on the page */
         /* Inline sparklines take their values from the contents of the tag */
-        $('.inlinesparkline').sparkline(); 
+        $('.inlinesparkline').sparkline('html', {type: 'line',
+                    width: '60',
+                    height: '25',
+                    lineColor: '#ff5656',
+                    chartRangeMin: 0,
+                    chartRangeMax: 5,
+                    chartRangeMinX: 0});
 
         /* Sparklines can also take their values from the first argument 
         passed to the sparkline() function */
@@ -25,37 +31,42 @@
     </script>
 </head>
 <body>
-  <% require './metricalc' %>
+  <% require "./metricalc" %>
   <% surv = SurveyData.new %>
   <% inp = InputData.new %> 
-  <% inp.read "/mydev/metriccalc/data/weekly4file.csv", surv %>
+  <% inp.read "/mydev/metricalc/data/weekly4file.csv", surv %>
   <% surv.process %>
-<h1>Overall results of the survey</h1>
+<h1>Overall results of the COSI JBS 2012 survey</h1>
 <h2>Summary</h2>
 <ul>
     <li>Weeks surveyed so far: <%= surv.n_weeks %> </li>
     <li>Number of students: <%= surv.n_students %> </li>
 </ul>
 <h2>Questions summary:</h2>
-<ul>
-    <li>All questions have the following possible responses:
-        <ul>
-            <% Response.resp_choices_n.times do |i| %>
-                <li><%= Response.resp_choice_string(i)%></li>
-            <% end %>
-        </ul>
-    </li>
-    <li> Each topic below is followed by a sparkline indicating how the rating for that quesion changes from week to week in the class
-    </li>
-</ul>
-<p style="font-size: large;">
-    Agile Development, week to week: <span class="inlinesparkline">
-    <% weekly_responses = surv.questions[0].weekly_responses %>
-        <% weekly_responses.each do |a_response| %>
-            <%= a_response %>,
-        <% end %>
-    </span>.
+<p>All questions have the following possible responses:</p>
+<ol>
+    <% Response.resp_choices_n.times do |i| %>
+        <li><%= Response.choice2string(i)%></li>
+    <% end %>
+</ol>
+<h2>Results Summary</h2>
+<p>
+Each topic below is followed by a sparkline indicating how the rating for that quesion changes from week to week in the class
 </p>
+<table style="font-size: 16pt;">
+  <% surv.n_questions.times do |x| %>
+    <tr>
+        <td>
+            <span class="inlinesparkline" style="background-color: #eee;">
+                <%= surv.question_response_avg_vector(x-1).join(", ") %>
+            </span>
+        </td>
+        <td>
+            <%= surv.question(x-1).text %>:
+        </td>
+    </tr>
+  <% end %>
+</table>
 
 
 

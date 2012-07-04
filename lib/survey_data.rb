@@ -1,27 +1,27 @@
 require 'american_date'
-require_relative 'rounds_data'
+require_relative 'round'
+require_relative 'question'
 
 class SurveyData
   attr_accessor :rounds
 
-  def initialize ques=[], resp=[]
+  def initialize(ques=[], resp=[])
     @rounds = []
     @responses = []
-    @questions = ques
+    @questions = []
     resp.each { |r| add_response r }
-  end
-
-  def set_questions q_array
-    startColForQuestions = 8
-    @questions = nil
+    ques.each_with_index { |q, i| add_question(i, q)}
   end
 
   def add_response(resp_array)
     @responses << Response.new(resp_array)
   end
 
+  def add_question(index, qstring)
+    @questions << Question.new(index, qstring)
+  end
+
   def process
-    #puts "Processing..."
     @responses.sort { |a, b| a.calendar_week <=> b.calendar_week }
     determine_rounds
   end
@@ -30,16 +30,19 @@ class SurveyData
   def determine_rounds
     @rounds = []
     the_round = 0
-    @rounds[the_round] = RoundsData.new(0)
+    @rounds[the_round] = Round.new(0)
     @responses.each_index do |ind|
       if !(@responses[ind+1].nil? || @responses[ind].same_round?(@responses[ind+1]))
         @rounds[the_round].fin = ind
-        #puts "round boundary: #{the_round}, #{@rounds[the_round].inspect}, #{ind}"
         the_round += 1
-        @rounds[the_round] = RoundsData.new(ind+1)
+        @rounds[the_round] = Round.new(ind+1)
       end
     end
     @rounds[the_round].fin = @responses.length-1
+  end
+
+  def cell(question_col, response_row)
+    @responses[response_row].value(question_col)
   end
 
   def n_responses_for_round n
@@ -57,7 +60,7 @@ class SurveyData
   end
 
   def n_students
-    n_responses / n_rounds
+    (1.0 * n_responses) / n_rounds
   end
 
   def n_weeks
@@ -66,6 +69,20 @@ class SurveyData
 
   def response_choices
     Response.response_choices
+  end
+
+  def n_questions
+    @questions.size
+  end
+
+  def question i
+    @questions[i]
+  end
+
+  def question_response_avg_vector(question)
+  #  [1,1,2,2,3,3,4,5,5]
+    raise "invalid question number" if question > n_questions
+    @rounds.map { |r| r.average_for_question(@questions[question].index, self) }
   end
 
 end

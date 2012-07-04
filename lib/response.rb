@@ -12,14 +12,22 @@ class Response
     self.resp_choices.size
   end
 
-  def self.resp_choice_string v
-    self.resp_choices.find { |x| x[0]==v }[1]
+  def self.choice2string val
+    self.resp_choices.find { |x| x[0] == val }[1]
   end
-    
+
+  def self.string2choice str
+    self.resp_choices.find { |x| x[1] == str }[0]
+  end
+
   attr_reader :time
   def initialize resp_array
     @time = DateTime.parse(resp_array[0])
     @data = resp_array
+  end
+
+  def value(question)
+    @data[question]
   end
 
   def day

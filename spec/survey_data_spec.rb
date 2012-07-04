@@ -14,7 +14,7 @@ describe "test input data" do
         [["7/8/2012 12:27:46", 1, 2],
          ["7/7/2012 12:27:46", 1, 2],
          ["7/9/2012 12:27:46", 1, 2],
-         ["7/10/2012 12:27:46", 1, 2]])
+         ["7/10/2012 12:27:46", 1, 100]])
          s.process
          s }
     it { subject.n_responses.should be == 4}
@@ -24,6 +24,14 @@ describe "test input data" do
     it { subject.rounds[1].start.should be == 2}
     it { subject.rounds[1].fin.should be == 3}
     it { subject.rounds[2].should be_nil }
+    it { subject.n_questions.should be == 3}
+    it { subject.question(2).text.should be == "Q2" }
+    it { subject. cell(1, 0).should be == 1 }
+    it { subject. cell(2, 3).should be == 100 }
+    it { subject.rounds[0].average_for_question(2, subject).should be == 2}
+    it { subject.rounds[1].average_for_question(2, subject).should be == 51}
+
+
   end
 
   describe "small data with tricky rounds set" do
@@ -49,14 +57,23 @@ describe "test input data" do
   describe "use third week of data" do
     subject { surv = SurveyData.new
               inp = InputData.new 
-              inp.read "/mydev/metriccalc/data/weekly3file.csv", surv
+              inp.read "/mydev/metricalc/data/weekly4file.csv", surv
               surv.process
               surv }
-    it { subject.n_responses.should be == 33 }
-    it { subject.n_rounds.should be == 3 }
+    it { subject.n_responses.should be == 44 }
+    it { subject.n_rounds.should be == 4 }
     it { subject.n_responses_for_round(0).should be == 11 }
     it { subject.n_responses_for_round(1).should be == 11 }
     it { subject.n_responses_for_round(2).should be == 11 }
+    it { subject.question(0).text.should be == "Ruby Programming"}
+    it { subject.question(0).text.class.should be == String }
+    it { subject.n_questions.should be == 3}
+    it { subject.question(2).text.should be == "Unit tests (Rspec)" }
+    it { subject. cell(9, 0).should be == "I am able to use and apply it" }
+    it { subject. cell(10, 2).should be == "Sounds familiar to me"}
+    it { subject.rounds[0].average_for_question(2, subject).should be == 2}
+    it { subject.rounds[1].average_for_question(2, subject).should be == 51}
+
 
   end
 

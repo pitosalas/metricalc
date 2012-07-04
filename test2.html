@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../bootstrap/docs/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../bootstrap/docs/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bootstrap/docs/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bootstrap/docs/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../bootstrap/docs/assets/ico/apple-touch-icon-57-precomposed.png">
+
+   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.sparkline.min.js"></script>
+
+    <script type="text/javascript">
+    $(function() {
+        /** This code runs when everything has been loaded on the page */
+        /* Inline sparklines take their values from the contents of the tag */
+        $('.inlinesparkline').sparkline('html', {type: 'line',
+                    width: '60',
+                    lineColor: '#ff5656',
+                    chartRangeMin: 0,
+                    chartRangeMax: 5,
+                    chartRangeMinX: 0});
+
+        /* Sparklines can also take their values from the first argument 
+        passed to the sparkline() function */
+        var myvalues = [10,8,5,7,4,4,1];
+        $('.dynamicsparkline').sparkline(myvalues);
+
+        /* The second argument gives options such as chart type */
+        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+
+        /* Use 'html' instead of an array of values to pass options 
+        to a sparkline with data in the tag */
+        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+    });
+    </script>
+
+  </head>
+
+<body>
+  
+  
+   
+  
+  
+
+  <div class="container">
+  <h1>Overall results of the COSI JBS 2012 survey</h1>
+  <p>Every week each student was asked to fill out a standard questionaire. Questions were added during the course, but no questions were changed or deleted. The goal was to see if our teaching was effective and our learning objectives were being achieved.
+  
+  <h2>Summary</h2>
+  <ul>
+      <li>Weeks surveyed so far: 5 </li>
+      <li>Number of students: 10.0 </li>
+  </ul>
+  <h2>Questions summary:</h2>
+  <p>All questions have the following possible responses:</p>
+  <ol>
+      
+          <li>Not a clue what it is</li>
+      
+          <li>Sounds familiar to me</li>
+      
+          <li>I feel I understand it</li>
+      
+          <li>I am able to use and apply it</li>
+      
+          <li>I know it in depth</li>
+      
+  </ol>
+  <h2>Results Summary</h2>
+  <p>
+  Each topic below is followed by a sparkline indicating how the rating for that quesion changes from week to week in the class
+  </p>
+
+  <table class="table table-bordered" style="width: 65%;">
+    <thead>
+      <tr>
+        <th style="width: 40%; text-align: right">Learning Objective</th>
+        <th>wk 1</th>
+        <th>wk 2</th>
+        <th>wk 3</th>
+        <th>wk 4</th>
+        <th>wk 5</th>
+        <th style="width: 10%;">Charted</th>
+      </tr>
+    </thead>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Cohort Analysis: how do do it, what it means:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, null, null
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Ruby Programming:
+            </td>
+            
+            
+              <td>2.82</td>
+              
+              <td>2.91</td>
+              
+              <td>3.00</td>
+              
+              <td>2.91</td>
+              
+              <td>3.33</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    2.82, 2.91, 3.00, 2.91, 3.33
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Ruby on Rails:
+            </td>
+            
+            
+              <td>1.18</td>
+              
+              <td>2.27</td>
+              
+              <td>2.82</td>
+              
+              <td>2.64</td>
+              
+              <td>3.17</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.18, 2.27, 2.82, 2.64, 3.17
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Unit tests (Rspec):
+            </td>
+            
+            
+              <td>0.55</td>
+              
+              <td>1.64</td>
+              
+              <td>2.36</td>
+              
+              <td>2.27</td>
+              
+              <td>2.50</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.55, 1.64, 2.36, 2.27, 2.50
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Paper Prototyping:
+            </td>
+            
+            
+              <td>1.91</td>
+              
+              <td>3.36</td>
+              
+              <td>3.18</td>
+              
+              <td>2.91</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.91, 3.36, 3.18, 2.91, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Rails Models:
+            </td>
+            
+            
+              <td>1.00</td>
+              
+              <td>2.27</td>
+              
+              <td>2.91</td>
+              
+              <td>2.82</td>
+              
+              <td>3.17</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.00, 2.27, 2.91, 2.82, 3.17
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Rails Controllers:
+            </td>
+            
+            
+              <td>0.91</td>
+              
+              <td>2.18</td>
+              
+              <td>2.64</td>
+              
+              <td>2.55</td>
+              
+              <td>2.83</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.91, 2.18, 2.64, 2.55, 2.83
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Rails Views:
+            </td>
+            
+            
+              <td>0.82</td>
+              
+              <td>2.00</td>
+              
+              <td>2.82</td>
+              
+              <td>2.64</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.82, 2.00, 2.82, 2.64, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Model/View/Contoller:
+            </td>
+            
+            
+              <td>1.55</td>
+              
+              <td>2.45</td>
+              
+              <td>2.73</td>
+              
+              <td>2.64</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.55, 2.45, 2.73, 2.64, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Scrum and/or agile:
+            </td>
+            
+            
+              <td>2.18</td>
+              
+              <td>2.64</td>
+              
+              <td>2.91</td>
+              
+              <td>2.45</td>
+              
+              <td>2.83</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    2.18, 2.64, 2.91, 2.45, 2.83
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                REST:
+            </td>
+            
+            
+              <td>0.73</td>
+              
+              <td>1.55</td>
+              
+              <td>2.18</td>
+              
+              <td>2.55</td>
+              
+              <td>2.83</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.73, 1.55, 2.18, 2.55, 2.83
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                HTML and CSS:
+            </td>
+            
+            
+              <td>1.82</td>
+              
+              <td>2.64</td>
+              
+              <td>2.91</td>
+              
+              <td>2.55</td>
+              
+              <td>2.67</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.82, 2.64, 2.91, 2.55, 2.67
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Javascript:
+            </td>
+            
+            
+              <td>1.18</td>
+              
+              <td>1.82</td>
+              
+              <td>2.00</td>
+              
+              <td>1.55</td>
+              
+              <td>1.67</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.18, 1.82, 2.00, 1.55, 1.67
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Designing Data Models:
+            </td>
+            
+            
+              <td>1.00</td>
+              
+              <td>2.36</td>
+              
+              <td>2.73</td>
+              
+              <td>2.73</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.00, 2.36, 2.73, 2.73, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Internet architecture/TCP/IP etc:
+            </td>
+            
+            
+              <td>1.00</td>
+              
+              <td>1.18</td>
+              
+              <td>1.55</td>
+              
+              <td>1.64</td>
+              
+              <td>1.83</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.00, 1.18, 1.55, 1.64, 1.83
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Lean Startup:
+            </td>
+            
+            
+              <td>0.64</td>
+              
+              <td>0.91</td>
+              
+              <td>1.27</td>
+              
+              <td>1.27</td>
+              
+              <td>2.33</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.64, 0.91, 1.27, 1.27, 2.33
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Viral growth for social networks:
+            </td>
+            
+            
+              <td>0.82</td>
+              
+              <td>0.91</td>
+              
+              <td>1.45</td>
+              
+              <td>1.27</td>
+              
+              <td>1.33</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.82, 0.91, 1.45, 1.27, 1.33
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Mobile App Architectures:
+            </td>
+            
+            
+              <td>0.55</td>
+              
+              <td>1.09</td>
+              
+              <td>1.36</td>
+              
+              <td>0.82</td>
+              
+              <td>1.33</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.55, 1.09, 1.36, 0.82, 1.33
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Writing Scrum Stories:
+            </td>
+            
+            
+              <td>1.64</td>
+              
+              <td>2.27</td>
+              
+              <td>2.45</td>
+              
+              <td>2.55</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    1.64, 2.27, 2.45, 2.55, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                How to do login and authentication in a web app:
+            </td>
+            
+            
+              <td>0.64</td>
+              
+              <td>1.45</td>
+              
+              <td>2.45</td>
+              
+              <td>2.73</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.64, 1.45, 2.45, 2.73, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Databases and migrations:
+            </td>
+            
+            
+              <td>0.91</td>
+              
+              <td>2.00</td>
+              
+              <td>2.73</td>
+              
+              <td>2.64</td>
+              
+              <td>3.33</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.91, 2.00, 2.73, 2.64, 3.33
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Scaling web based applications:
+            </td>
+            
+            
+              <td>0.82</td>
+              
+              <td>1.55</td>
+              
+              <td>1.55</td>
+              
+              <td>1.45</td>
+              
+              <td>1.83</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    0.82, 1.55, 1.55, 1.45, 1.83
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Regular Expressions:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>2.64</td>
+              
+              <td>2.91</td>
+              
+              <td>2.82</td>
+              
+              <td>2.83</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, 2.64, 2.91, 2.82, 2.83
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Duck Typing in Ruby:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>1.73</td>
+              
+              <td>1.91</td>
+              
+              <td>2.09</td>
+              
+              <td>2.17</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, 1.73, 1.91, 2.09, 2.17
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Conducting effective usability tests:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>1.36</td>
+              
+              <td>2.09</td>
+              
+              <td>2.09</td>
+              
+              <td>1.67</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, 1.36, 2.09, 2.09, 1.67
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                One to one, one to many, many to one data models:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>2.55</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, 2.55, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                HTTP, stateless protocols, GET, PUT, POST, etc.:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>2.64</td>
+              
+              <td>2.83</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, 2.64, 2.83
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Object Oriented Design:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>3.00</td>
+              
+              <td>3.17</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, 3.00, 3.17
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Elevator Pitch:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>2.55</td>
+              
+              <td>2.67</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, 2.55, 2.67
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Relational Database:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>3.17</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, null, 3.17
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                NOSQL database:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>2.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, null, 2.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                SQL: Structured Query Language:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>3.00</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, null, 3.00
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 20px;">
+                Structure a relational database for a Many-to-Many relationship:
+            </td>
+            
+            
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>n/a</td>
+              
+              <td>3.17</td>
+              
+
+            <td>
+                <span class="inlinesparkline">
+                    null, null, null, null, 3.17
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    
+  </table>
+
+  </div> <!-- /container -->
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../bootstrap/docs/assets/js/bootstrap-transition.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-alert.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-modal.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-dropdown.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-scrollspy.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-tab.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-tooltip.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-popover.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-button.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-collapse.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-carousel.js"></script>
+  <script src="../bootstrap/docs/assets/js/bootstrap-typeahead.js"></script>
+
+</body>
+</html>
