@@ -36,9 +36,10 @@
         /** This code runs when everything has been loaded on the page */
         /* Inline sparklines take their values from the contents of the tag */
         $('.inlinesparkline').sparkline('html', {type: 'line',
-                    width: '100',
-                    height: '30',
+                    width: '60',
                     lineColor: '#ff5656',
+                    chartRangeMin: 0,
+                    chartRangeMax: 5,
                     chartRangeMinX: 0});
 
         /* Sparklines can also take their values from the first argument 
@@ -54,6 +55,25 @@
         $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
     });
   </script>
+
+    <link href="css/basic.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="http://filamentgroup.github.com/EnhanceJS/enhance.js"></script> 
+  <script type="text/javascript">
+    // Run capabilities test
+    enhance({
+      loadScripts: [
+        {src: 'js/excanvas.js', iecondition: 'all'},
+        'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js',
+        'js/visualize.jQuery.js',
+        'js/example.js'
+      ],
+      loadStyles: [
+        'css/visualize.css',
+        'css/visualize-dark.css'
+      ] 
+    });   
+    </script>
+
 
 </head>
 
@@ -86,6 +106,7 @@
   </p>
 
   <table class="table table-bordered" id="my_table" style="width: 65%;">
+    <caption>Results of Survey for each Learning Objective</caption>
     <thead>
       <tr>
         <th style="width: 40%; text-align: right">Learning Objective</th>
@@ -105,10 +126,10 @@
             </td>
             <% vec = surv.question_response_avg_vector(x-1) %>
             <% vec.each do |val| %>
-              <td><%= val != "null" ? val : "n/a" %></td>
+              <td class="data"><%= val != "null" ? val : "n/a" %></td>
               <% end %>
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     <%= surv.question_response_avg_vector(x-1).join(", ") %>
                 </span>

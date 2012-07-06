@@ -36,9 +36,10 @@
         /** This code runs when everything has been loaded on the page */
         /* Inline sparklines take their values from the contents of the tag */
         $('.inlinesparkline').sparkline('html', {type: 'line',
-                    width: '100',
-                    height: '30',
+                    width: '60',
                     lineColor: '#ff5656',
+                    chartRangeMin: 0,
+                    chartRangeMax: 5,
                     chartRangeMinX: 0});
 
         /* Sparklines can also take their values from the first argument 
@@ -54,6 +55,25 @@
         $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
     });
   </script>
+
+    <link href="css/basic.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="http://filamentgroup.github.com/EnhanceJS/enhance.js"></script> 
+  <script type="text/javascript">
+    // Run capabilities test
+    enhance({
+      loadScripts: [
+        {src: 'js/excanvas.js', iecondition: 'all'},
+        'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js',
+        'js/visualize.jQuery.js',
+        'js/example.js'
+      ],
+      loadStyles: [
+        'css/visualize.css',
+        'css/visualize-dark.css'
+      ] 
+    });   
+    </script>
+
 
 </head>
 
@@ -94,6 +114,7 @@
   </p>
 
   <table class="table table-bordered" id="my_table" style="width: 65%;">
+    <caption>Results of Survey for each Learning Objective</caption>
     <thead>
       <tr>
         <th style="width: 40%; text-align: right">Learning Objective</th>
@@ -113,18 +134,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, null, null
                 </span>
@@ -139,18 +160,18 @@
             </td>
             
             
-              <td>2.82</td>
+              <td class="data">2.82</td>
               
-              <td>2.91</td>
+              <td class="data">2.91</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
-              <td>2.91</td>
+              <td class="data">2.91</td>
               
-              <td>3.33</td>
+              <td class="data">3.33</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     2.82, 2.91, 3.00, 2.91, 3.33
                 </span>
@@ -165,18 +186,18 @@
             </td>
             
             
-              <td>1.18</td>
+              <td class="data">1.18</td>
               
-              <td>2.27</td>
+              <td class="data">2.27</td>
               
-              <td>2.82</td>
+              <td class="data">2.82</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>3.17</td>
+              <td class="data">3.17</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.18, 2.27, 2.82, 2.64, 3.17
                 </span>
@@ -191,18 +212,18 @@
             </td>
             
             
-              <td>0.55</td>
+              <td class="data">0.55</td>
               
-              <td>1.64</td>
+              <td class="data">1.64</td>
               
-              <td>2.36</td>
+              <td class="data">2.36</td>
               
-              <td>2.27</td>
+              <td class="data">2.27</td>
               
-              <td>2.50</td>
+              <td class="data">2.50</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.55, 1.64, 2.36, 2.27, 2.50
                 </span>
@@ -217,18 +238,18 @@
             </td>
             
             
-              <td>1.91</td>
+              <td class="data">1.91</td>
               
-              <td>3.36</td>
+              <td class="data">3.36</td>
               
-              <td>3.18</td>
+              <td class="data">3.18</td>
               
-              <td>2.91</td>
+              <td class="data">2.91</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.91, 3.36, 3.18, 2.91, 3.00
                 </span>
@@ -243,18 +264,18 @@
             </td>
             
             
-              <td>1.00</td>
+              <td class="data">1.00</td>
               
-              <td>2.27</td>
+              <td class="data">2.27</td>
               
-              <td>2.91</td>
+              <td class="data">2.91</td>
               
-              <td>2.82</td>
+              <td class="data">2.82</td>
               
-              <td>3.17</td>
+              <td class="data">3.17</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.00, 2.27, 2.91, 2.82, 3.17
                 </span>
@@ -269,18 +290,18 @@
             </td>
             
             
-              <td>0.91</td>
+              <td class="data">0.91</td>
               
-              <td>2.18</td>
+              <td class="data">2.18</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>2.55</td>
+              <td class="data">2.55</td>
               
-              <td>2.83</td>
+              <td class="data">2.83</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.91, 2.18, 2.64, 2.55, 2.83
                 </span>
@@ -295,18 +316,18 @@
             </td>
             
             
-              <td>0.82</td>
+              <td class="data">0.82</td>
               
-              <td>2.00</td>
+              <td class="data">2.00</td>
               
-              <td>2.82</td>
+              <td class="data">2.82</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.82, 2.00, 2.82, 2.64, 3.00
                 </span>
@@ -321,18 +342,18 @@
             </td>
             
             
-              <td>1.55</td>
+              <td class="data">1.55</td>
               
-              <td>2.45</td>
+              <td class="data">2.45</td>
               
-              <td>2.73</td>
+              <td class="data">2.73</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.55, 2.45, 2.73, 2.64, 3.00
                 </span>
@@ -347,18 +368,18 @@
             </td>
             
             
-              <td>2.18</td>
+              <td class="data">2.18</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>2.91</td>
+              <td class="data">2.91</td>
               
-              <td>2.45</td>
+              <td class="data">2.45</td>
               
-              <td>2.83</td>
+              <td class="data">2.83</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     2.18, 2.64, 2.91, 2.45, 2.83
                 </span>
@@ -373,18 +394,18 @@
             </td>
             
             
-              <td>0.73</td>
+              <td class="data">0.73</td>
               
-              <td>1.55</td>
+              <td class="data">1.55</td>
               
-              <td>2.18</td>
+              <td class="data">2.18</td>
               
-              <td>2.55</td>
+              <td class="data">2.55</td>
               
-              <td>2.83</td>
+              <td class="data">2.83</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.73, 1.55, 2.18, 2.55, 2.83
                 </span>
@@ -399,18 +420,18 @@
             </td>
             
             
-              <td>1.82</td>
+              <td class="data">1.82</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>2.91</td>
+              <td class="data">2.91</td>
               
-              <td>2.55</td>
+              <td class="data">2.55</td>
               
-              <td>2.67</td>
+              <td class="data">2.67</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.82, 2.64, 2.91, 2.55, 2.67
                 </span>
@@ -425,18 +446,18 @@
             </td>
             
             
-              <td>1.18</td>
+              <td class="data">1.18</td>
               
-              <td>1.82</td>
+              <td class="data">1.82</td>
               
-              <td>2.00</td>
+              <td class="data">2.00</td>
               
-              <td>1.55</td>
+              <td class="data">1.55</td>
               
-              <td>1.67</td>
+              <td class="data">1.67</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.18, 1.82, 2.00, 1.55, 1.67
                 </span>
@@ -451,18 +472,18 @@
             </td>
             
             
-              <td>1.00</td>
+              <td class="data">1.00</td>
               
-              <td>2.36</td>
+              <td class="data">2.36</td>
               
-              <td>2.73</td>
+              <td class="data">2.73</td>
               
-              <td>2.73</td>
+              <td class="data">2.73</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.00, 2.36, 2.73, 2.73, 3.00
                 </span>
@@ -477,18 +498,18 @@
             </td>
             
             
-              <td>1.00</td>
+              <td class="data">1.00</td>
               
-              <td>1.18</td>
+              <td class="data">1.18</td>
               
-              <td>1.55</td>
+              <td class="data">1.55</td>
               
-              <td>1.64</td>
+              <td class="data">1.64</td>
               
-              <td>1.83</td>
+              <td class="data">1.83</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.00, 1.18, 1.55, 1.64, 1.83
                 </span>
@@ -503,18 +524,18 @@
             </td>
             
             
-              <td>0.64</td>
+              <td class="data">0.64</td>
               
-              <td>0.91</td>
+              <td class="data">0.91</td>
               
-              <td>1.27</td>
+              <td class="data">1.27</td>
               
-              <td>1.27</td>
+              <td class="data">1.27</td>
               
-              <td>2.33</td>
+              <td class="data">2.33</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.64, 0.91, 1.27, 1.27, 2.33
                 </span>
@@ -529,18 +550,18 @@
             </td>
             
             
-              <td>0.82</td>
+              <td class="data">0.82</td>
               
-              <td>0.91</td>
+              <td class="data">0.91</td>
               
-              <td>1.45</td>
+              <td class="data">1.45</td>
               
-              <td>1.27</td>
+              <td class="data">1.27</td>
               
-              <td>1.33</td>
+              <td class="data">1.33</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.82, 0.91, 1.45, 1.27, 1.33
                 </span>
@@ -555,18 +576,18 @@
             </td>
             
             
-              <td>0.55</td>
+              <td class="data">0.55</td>
               
-              <td>1.09</td>
+              <td class="data">1.09</td>
               
-              <td>1.36</td>
+              <td class="data">1.36</td>
               
-              <td>0.82</td>
+              <td class="data">0.82</td>
               
-              <td>1.33</td>
+              <td class="data">1.33</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.55, 1.09, 1.36, 0.82, 1.33
                 </span>
@@ -581,18 +602,18 @@
             </td>
             
             
-              <td>1.64</td>
+              <td class="data">1.64</td>
               
-              <td>2.27</td>
+              <td class="data">2.27</td>
               
-              <td>2.45</td>
+              <td class="data">2.45</td>
               
-              <td>2.55</td>
+              <td class="data">2.55</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     1.64, 2.27, 2.45, 2.55, 3.00
                 </span>
@@ -607,18 +628,18 @@
             </td>
             
             
-              <td>0.64</td>
+              <td class="data">0.64</td>
               
-              <td>1.45</td>
+              <td class="data">1.45</td>
               
-              <td>2.45</td>
+              <td class="data">2.45</td>
               
-              <td>2.73</td>
+              <td class="data">2.73</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.64, 1.45, 2.45, 2.73, 3.00
                 </span>
@@ -633,18 +654,18 @@
             </td>
             
             
-              <td>0.91</td>
+              <td class="data">0.91</td>
               
-              <td>2.00</td>
+              <td class="data">2.00</td>
               
-              <td>2.73</td>
+              <td class="data">2.73</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>3.33</td>
+              <td class="data">3.33</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.91, 2.00, 2.73, 2.64, 3.33
                 </span>
@@ -659,18 +680,18 @@
             </td>
             
             
-              <td>0.82</td>
+              <td class="data">0.82</td>
               
-              <td>1.55</td>
+              <td class="data">1.55</td>
               
-              <td>1.55</td>
+              <td class="data">1.55</td>
               
-              <td>1.45</td>
+              <td class="data">1.45</td>
               
-              <td>1.83</td>
+              <td class="data">1.83</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     0.82, 1.55, 1.55, 1.45, 1.83
                 </span>
@@ -685,18 +706,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>2.91</td>
+              <td class="data">2.91</td>
               
-              <td>2.82</td>
+              <td class="data">2.82</td>
               
-              <td>2.83</td>
+              <td class="data">2.83</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, 2.64, 2.91, 2.82, 2.83
                 </span>
@@ -711,18 +732,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>1.73</td>
+              <td class="data">1.73</td>
               
-              <td>1.91</td>
+              <td class="data">1.91</td>
               
-              <td>2.09</td>
+              <td class="data">2.09</td>
               
-              <td>2.17</td>
+              <td class="data">2.17</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, 1.73, 1.91, 2.09, 2.17
                 </span>
@@ -737,18 +758,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>1.36</td>
+              <td class="data">1.36</td>
               
-              <td>2.09</td>
+              <td class="data">2.09</td>
               
-              <td>2.09</td>
+              <td class="data">2.09</td>
               
-              <td>1.67</td>
+              <td class="data">1.67</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, 1.36, 2.09, 2.09, 1.67
                 </span>
@@ -763,18 +784,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>2.55</td>
+              <td class="data">2.55</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, 2.55, 3.00
                 </span>
@@ -789,18 +810,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>2.64</td>
+              <td class="data">2.64</td>
               
-              <td>2.83</td>
+              <td class="data">2.83</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, 2.64, 2.83
                 </span>
@@ -815,18 +836,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
-              <td>3.17</td>
+              <td class="data">3.17</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, 3.00, 3.17
                 </span>
@@ -841,18 +862,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>2.55</td>
+              <td class="data">2.55</td>
               
-              <td>2.67</td>
+              <td class="data">2.67</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, 2.55, 2.67
                 </span>
@@ -867,18 +888,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>3.17</td>
+              <td class="data">3.17</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, null, 3.17
                 </span>
@@ -893,18 +914,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>2.00</td>
+              <td class="data">2.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, null, 2.00
                 </span>
@@ -919,18 +940,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>3.00</td>
+              <td class="data">3.00</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, null, 3.00
                 </span>
@@ -945,18 +966,18 @@
             </td>
             
             
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>n/a</td>
+              <td class="data">n/a</td>
               
-              <td>3.17</td>
+              <td class="data">3.17</td>
               
 
-            <td style="padding: 0px; margin: 0px">
+            <td>
                 <span class="inlinesparkline">
                     null, null, null, null, 3.17
                 </span>
