@@ -85,4 +85,8 @@ class SurveyData
     @rounds.map { |r| r.average_for_question(@questions[question].index, self) }
   end
 
+  def question_response_stats(question)
+    raise "invalid question number" if question > n_questions
+    @rounds.map { |r| r.stats_for_question(@questions[question].index, self) }
+  end
 end
