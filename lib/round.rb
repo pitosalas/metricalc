@@ -1,8 +1,6 @@
+require 'ostruct'
 class Round
 
-  class Stats
-    attr_accessor :average, :minimum, :maximum
-  end
   attr_accessor :start, :fin
   def initialize start_pos
     @start = start_pos
@@ -33,6 +31,7 @@ class Round
     minimum = 10
     maximum = 0
     count = 0
+    greater_or_equal_to3 = 0
     (@start..@fin).each do 
       |response_row| 
       val = data.cell(question_col, response_row)
@@ -42,12 +41,23 @@ class Round
         count += 1
         minimum = val if val < minimum
         maximum = val if val > maximum
+        if val >= 3
+          greater_or_equal_to3 += 1 
+        end
       end
     end
-    res = Stats.new
+    res = OpenStruct.new
     res.average = count == 0 ? "null" : sprintf("%.2f", ((1.0 * total) / count))
     res.maximum = maximum == 0 ? "" : maximum
     res.minimum = minimum == 10 ? "" : minimum
+    res.count = count
+    res.ge3 = greater_or_equal_to3
+    res.ge3percent = count == 0 ? "null" : 
+                    sprintf("%.2f\%", (greater_or_equal_to3*100.0 / count))
+    res.rcolor = 256
+    res.gcolor = count != 0 ? (128 + (128 * greater_or_equal_to3 / count)) : 256
+    res.bcolor = 256
+
     res
   end
 end
