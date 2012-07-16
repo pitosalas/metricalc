@@ -1,0 +1,90 @@
+<%= File.open("_metricalc_html_header.html.erb") { |f| f.read } %>
+<body>
+  <% require "./metricalc" %>
+  <% surv = SurveyData.new %>
+  <% inp = InputData.new %> 
+  <% inp.read "/mydev/metricalc/data/week6file.csv", surv %>
+  <% surv.process %>
+
+  <div class="container">
+  <h1>Overall results of the COSI JBS 2012 survey</h1>
+  <p>Every week each student was asked to fill out a standard questionaire. Questions were added during the course, but no questions were changed or deleted. The goal was to see if our teaching was effective and our learning objectives were being achieved.
+  
+  <h2>Summary</h2>
+  <ul>
+      <li>Weeks surveyed so far: <%= surv.n_weeks %> </li>
+      <li>Number of students: <%= surv.n_students %> </li>
+  </ul>
+  <h2>Questions summary:</h2>
+  <p>All questions have the following possible responses:</p>
+  <ol>
+      <% Response.resp_choices_n.times do |i| %>
+          <li><%= Response.choice2string(i)%></li>
+      <% end %>
+  </ol>
+  <h2>Results Summary</h2>
+  <p>
+  Each topic below is followed by a sparkline indicating how the rating for that quesion changes from week to week in the class
+  </p>
+
+  <table class="table table-bordered" id="my_table" style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 10%; text-align: right">Learning Objective</th>
+        <th>wk 1</th>
+        <th>wk 2</th>
+        <th>wk 3</th>
+        <th>wk 4</th>
+        <th>wk 5</th>
+        <th>wk 6</th>
+        <th style="width: 10%;">Charted</th>
+      </tr>
+    </thead>
+    <% surv.n_questions.times do |x| %>
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 15%;">
+                <%= surv.question(x-1).text %>:
+            </td>
+            <% vec = surv.question_response_stats(x-1) %>
+            <% vec.each do |stats| %>
+              <td style="background-color: rgb(
+                <%= stats.rcolor %>,<%=stats.gcolor%>,<%=stats.bcolor%>);">
+                <div style="background-color: rgb(210,210,210); 
+                            height:10px; width:100%;">
+                  <div style="background-color: rgb(180,180,180); 
+                              height:10px; width:70%">
+                    <div style="background-color: rgb(100,100,100); 
+                                height:10px; width:50%">
+                      </div>
+      
+                    </div>
+                  </div>
+                <% if stats.average=="null" %>
+                  n/a
+                <% else %>
+                  <%= stats.average %> 
+                  <br/>
+                  count: <%= stats.count %>
+                  <br/>
+                  range: <%= stats.minimum%>..<%= stats.maximum %>
+                  <br/>
+                   <%= stats.ge3percent %> >= 3 (<%= stats.ge3 %>)
+                <% end %>
+
+              </td>
+            <% end %> 
+
+            <td style="padding: 5px; margin: 0px">
+                <span class="inlinesparkline">
+                    <%= surv.question_response_avg_vector(x-1).join(", ") %>
+                </span>
+            </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+  </div> 
+</body>
+</html>
