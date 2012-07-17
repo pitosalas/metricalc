@@ -18,10 +18,18 @@ class Stats
   end
 
   def pie_string
-    "#{ge4}, #{ge3-ge4}, #{count-ge3}"
+    if (is_valid)
+      "#{ge4}, #{ge3-ge4}, #{count-ge3}"
+    else
+      "0, 0, 11"
+    end
   end
 
   def brief_summary
-    "#{count}, #{ge3}, #{ge4}"
+    if (is_valid)
+      "#{count}, #{ge3}, #{ge4}"
+    else
+      "no reports"
+    end
   end
 end

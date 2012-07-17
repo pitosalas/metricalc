@@ -103,10 +103,8 @@
             <% vec = surv.question_response_stats(x-1) %>
             <% vec.each do |stats| %>
               <td>
-                <% if stats.is_valid %>
                   <span class="sparkpie"><%= stats.pie_string %></span>
                   <div><%= stats.brief_summary %></div>
-                <% end %>
               </td>
             <% end %> 
 
