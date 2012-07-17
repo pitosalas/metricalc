@@ -42,17 +42,10 @@
                     chartRangeMax: 5,
                     chartRangeMin: 0});
 
-        /* Sparklines can also take their values from the first argument 
-        passed to the sparkline() function */
-        var myvalues = [10,8,5,7,4,4,1];
-        $('.dynamicsparkline').sparkline(myvalues);
+        $(".sparkpie").sparkline('html', {
+                    type: 'pie',
+                    height: '40'});
 
-        /* The second argument gives options such as chart type */
-        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
-
-        /* Use 'html' instead of an array of values to pass options 
-        to a sparkline with data in the tag */
-        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
     });
   </script>
 

@@ -1,9 +1,9 @@
-<%= File.open("_metricalc_html_header.html.erb") { |f| f.read } %>
+<%= File.open("_metricalc_html_header.html.erb") { |f| f.read } %> 
 <body>
   <% require "./metricalc" %>
   <% surv = SurveyData.new %>
   <% inp = InputData.new %> 
-  <% inp.read "/mydev/metricalc/data/week6file.csv", surv %>
+  <% inp.read "/mydev/metricalc/data/week7file.csv", surv %>
   <% surv.process %>
 
   <div class="container">
@@ -17,12 +17,12 @@
   </ul>
   <h2>Questions summary:</h2>
   <p>All questions have the following possible responses:</p>
-  <ol>
+  <ul>
       <% Response.resp_choices_n.times do |i| %>
-          <li><%= Response.choice2string(i)%></li>
+          <li><%= Response.choice2string(i)%>  <strong>(<%= i %>)</strong></li>
       <% end %>
-  </ol>
-  <h2>Results Summary</h2>
+  </ul>
+  <h1>Results Summary</h1>
   <p>
   Each topic below is followed by a sparkline indicating how the rating for that quesion changes from week to week in the class
   </p>
@@ -37,6 +37,7 @@
         <th>wk 4</th>
         <th>wk 5</th>
         <th>wk 6</th>
+        <th>wk 7</th>
         <th style="width: 10%;">Charted</th>
       </tr>
     </thead>
@@ -48,28 +49,20 @@
             </td>
             <% vec = surv.question_response_stats(x-1) %>
             <% vec.each do |stats| %>
-              <td style="background-color: rgb(
-                <%= stats.rcolor %>,<%=stats.gcolor%>,<%=stats.bcolor%>);">
-                <div style="background-color: rgb(210,210,210); 
-                            height:10px; width:100%;">
-                  <div style="background-color: rgb(180,180,180); 
-                              height:10px; width:70%">
-                    <div style="background-color: rgb(100,100,100); 
-                                height:10px; width:50%">
-                      </div>
-      
-                    </div>
-                  </div>
-                <% if stats.average=="null" %>
+              <td>
+                <% if !stats.is_valid %>
                   n/a
                 <% else %>
-                  <%= stats.average %> 
+                  <%= stats.average_string %> 
                   <br/>
                   count: <%= stats.count %>
                   <br/>
                   range: <%= stats.minimum%>..<%= stats.maximum %>
                   <br/>
-                   <%= stats.ge3percent %> >= 3 (<%= stats.ge3 %>)
+                  <%= stats.ge_3_percent_string %> >= 3 (<%= stats.ge3 %>)
+                  <br/>
+                  <%= stats.ge_4_percent_string %> = 4 (<%= stats.ge4 %>)
+                  
                 <% end %>
 
               </td>
@@ -85,6 +78,45 @@
     <% end %>
   </table>
 
-  </div> 
+  <h1>Percent understanding at different levels</h1>
+  <p>This section shows a pie chart for each week and each question. The first segment of the pie chart shows the percentage of students who self-assessed themselves as knowing the topic at a level of at least 2 (I feel I understand it) and teh second segment at a level of at least 3 ( I am able to use it and apply it.)</p>
+
+    <table class="table table-bordered" id="my_table" style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 10%; text-align: right">Learning Objective</th>
+        <th>wk 1</th>
+        <th>wk 2</th>
+        <th>wk 3</th>
+        <th>wk 4</th>
+        <th>wk 5</th>
+        <th>wk 6</th>
+        <th>wk 7</th>
+      </tr>
+    </thead>
+    <% surv.n_questions.times do |x| %>
+      <tbody>
+        <tr>
+            <td style="text-align: right; height: 15%;">
+                <%= surv.question(x-1).text %>:
+            </td>
+            <% vec = surv.question_response_stats(x-1) %>
+            <% vec.each do |stats| %>
+              <td>
+                <% if stats.is_valid %>
+                  <span class="sparkpie"><%= stats.pie_string %></span>
+                  <div><%= stats.brief_summary %></div>
+                <% end %>
+              </td>
+            <% end %> 
+
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+  
+
+
 </body>
 </html>
