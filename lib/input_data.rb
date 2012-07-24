@@ -17,6 +17,7 @@ class InputData
     (9..29).each { |i| surv.add_question(i, row[i].scan(/\[(.+)\]/).last.first)}
     (31..37).each { |i| surv.add_question(i, row[i].scan(/\[(.+)\]/).last.first)}
     (39..43).each { |i| surv.add_question(i, row[i].scan(/\[(.+)\]/).last.first)}
+    (45..56).each { |i| surv.add_question(i, row[i].scan(/\[(.+)\]/).last.first)}
   end
 end
 
