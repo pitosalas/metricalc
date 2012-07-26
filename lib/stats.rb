@@ -1,5 +1,18 @@
 class Stats
-  attr_accessor :is_valid, :total, :count, :minimum, :maximum, :ge3, :ge4
+  attr_accessor :total, :count, 
+                :minimum, :maximum, :ge2, :ge3, :ge4, :data
+
+  def initialize
+    @data = []
+    @total = 0
+    @count = 0
+    @total = 0
+    @minimum = 10
+    @maximum = 0
+    @ge2 = 0 
+    @ge3 = 0
+    @ge4 = 0
+  end
 
   def ge_3_percent_string
     "%.2f%" % (ge3*100.0 / count)
@@ -15,6 +28,10 @@ class Stats
 
   def average
     (1.0 * total) / count
+  end
+
+  def is_valid
+    @count != 0
   end
 
   def pie_string
