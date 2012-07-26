@@ -27,7 +27,7 @@ end
 
 prog = Program.create(name: "JBS")
 surv.n_questions.times do
-  |x| prog.items.create(text: surv.question(x-1).text)
+  |x| prog.items.create(text: surv.question(x-1).text, index: surv.question(x-1).index)
 end
 
 surv.n_rounds.times do
@@ -42,7 +42,8 @@ v.item = item
 surv.rounds.each_with_index do 
   |round, ind| 
   round = prog.round.new(index: ind)
-  round.
+  round.program = prog
+
 
   
 
